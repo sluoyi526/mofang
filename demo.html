@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔方游戏演示</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .demo-cube {
+            width: 150px;
+            height: 150px;
+            margin: 40px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 4s linear infinite;
+        }
+        
+        .cube-face {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .face-white { background-color: #ffffff; color: #333; }
+        .face-yellow { background-color: #ffeb3b; }
+        .face-red { background-color: #f44336; }
+        .face-orange { background-color: #ff9800; }
+        .face-green { background-color: #4caf50; }
+        .face-blue { background-color: #2196f3; }
+        
+        @keyframes rotate {
+            from { transform: rotateY(0deg) rotateX(0deg); }
+            to { transform: rotateY(360deg) rotateX(360deg); }
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature h3 {
+            margin-top: 0;
+            color: #ffeb3b;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #4caf50, #45a049);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        .controls-demo {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .control-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 5px 0;
+        }
+        
+        .key {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎲 在线魔方游戏</h1>
+        
+        <!-- 演示魔方 -->
+        <div class="demo-cube" id="demo-cube">
+            <!-- 魔方将通过JavaScript生成 -->
+        </div>
+        
+        <p style="font-size: 1.2rem; margin: 20px 0;">
+            体验最棒的在线魔方游戏！支持鼠标拖拽和键盘控制
+        </p>
+        
+        <a href="/rubiks-cube" class="cta-button">🎮 开始游戏</a>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>🎮 3D交互</h3>
+                <p>使用CSS 3D变换实现真实的魔方效果，支持鼠标拖拽旋转</p>
+            </div>
+            
+            <div class="feature">
+                <h3>⌨️ 键盘控制</h3>
+                <p>支持标准魔方记号的键盘控制，精确操作每个面</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📱 移动端支持</h3>
+                <p>完美支持触摸操作，随时随地享受魔方乐趣</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📊 游戏统计</h3>
+                <p>实时显示移动次数、用时和游戏状态</p>
+            </div>
+        </div>
+        
+        <div class="controls-demo">
+            <h3>🎮 操作说明</h3>
+            <div class="control-item">
+                <span class="key">鼠标拖拽</span>
+                <span>旋转整个魔方</span>
+            </div>
+            <div class="control-item">
+                <span class="key">R / L</span>
+                <span>右/左面顺时针旋转</span>
+            </div>
+            <div class="control-item">
+                <span class="key">U / D</span>
+                <span>上/下面顺时针旋转</span>
+            </div>
+            <div class="control-item">
+                <span class="key">F / B</span>
+                <span>前/后面顺时针旋转</span>
+            </div>
+            <div class="control-item">
+                <span class="key">'</span>
+                <span>逆时针旋转</span>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <p>🚀 立即开始你的魔方挑战之旅！</p>
+            <a href="/rubiks-cube" class="cta-button">🎯 开始游戏</a>
+        </div>
+    </div>
+    
+    <script>
+        // 创建演示魔方
+        function createDemoCube() {
+            const demoCube = document.getElementById('demo-cube');
+            
+            // 创建27个小方块
+            for (let x = -1; x <= 1; x++) {
+                for (let y = -1; y <= 1; y++) {
+                    for (let z = -1; z <= 1; z++) {
+                        if (x === 0 && y === 0 && z === 0) continue;
+                        
+                        const cubelet = document.createElement('div');
+                        cubelet.className = 'cube-face';
+                        
+                        const size = 50;
+                        cubelet.style.width = size + 'px';
+                        cubelet.style.height = size + 'px';
+                        cubelet.style.transform = `translate3d(${x * size}px, ${y * size}px, ${z * size}px)`;
+                        
+                        // 设置颜色
+                        const colors = [];
+                        if (z === 1) colors.push('red');
+                        if (z === -1) colors.push('orange');
+                        if (y === -1) colors.push('white');
+                        if (y === 1) colors.push('yellow');
+                        if (x === -1) colors.push('green');
+                        if (x === 1) colors.push('blue');
+                        
+                        if (colors.length > 0) {
+                            cubelet.className = `cube-face face-${colors[0]}`;
+                            cubelet.textContent = colors[0].charAt(0).toUpperCase();
+                        }
+                        
+                        demoCube.appendChild(cubelet);
+                    }
+                }
+            }
+        }
+        
+        // 页面加载完成后创建演示魔方
+        document.addEventListener('DOMContentLoaded', createDemoCube);
+    </script>
+</body>
+</html> 

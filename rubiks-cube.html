@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线魔方游戏</title>
+    <link rel="stylesheet" href="stylesheets/rubiks-cube.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🎲 在线魔方游戏</h1>
+            <div class="game-controls">
+                <button id="scramble-btn" class="btn">打乱魔方</button>
+                <button id="reset-btn" class="btn">重置魔方</button>
+                <button id="solve-btn" class="btn">自动还原</button>
+            </div>
+        </header>
+
+        <div class="game-main">
+            <div class="cube-container">
+                <div id="cube" class="cube">
+                    <!-- 魔方的27个小方块将通过JavaScript动态生成 -->
+                </div>
+            </div>
+
+            <div class="game-info">
+                <div class="controls-info">
+                    <h3>🎮 操作说明</h3>
+                    <div class="control-item">
+                        <span class="control-key">鼠标拖拽</span>
+                        <span class="control-desc">旋转整个魔方</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-key">R / L</span>
+                        <span class="control-desc">右/左面顺时针旋转</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-key">U / D</span>
+                        <span class="control-desc">上/下面顺时针旋转</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-key">F / B</span>
+                        <span class="control-desc">前/后面顺时针旋转</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-key">R' / L'</span>
+                        <span class="control-desc">右/左面逆时针旋转</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-key">U' / D'</span>
+                        <span class="control-desc">上/下面逆时针旋转</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-key">F' / B'</span>
+                        <span class="control-desc">前/后面逆时针旋转</span>
+                    </div>
+                </div>
+
+                <div class="stats">
+                    <h3>📊 游戏统计</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">移动次数:</span>
+                        <span id="move-count" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">用时:</span>
+                        <span id="timer" class="stat-value">00:00</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">状态:</span>
+                        <span id="status" class="stat-value">未开始</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-footer">
+            <p>💡 提示：使用鼠标拖拽可以自由旋转魔方，使用键盘可以精确控制每个面的旋转</p>
+        </div>
+    </div>
+
+    <script src="javascripts/rubiks-cube.js"></script>
+</body>
+</html> 
